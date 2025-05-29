@@ -33,4 +33,25 @@ This project is a simple, yet fully functional, Snake game. The snake grows when
 1. **Clone or download** the repository.
 2. **Open a terminal** and navigate to the project directory.
 3. **Run the game**
-4. Use your keyboard arrow keys to control the direction of the snake.
+3. **Run the game**:
+   ```
+   python snake_game.py
+   ```
+4. **Use arrow keys** to control the snake.
+
+---
+
+## 🎮 Controls
+
+- **Up Arrow:** Move up
+- **Down Arrow:** Move down
+- **Left Arrow:** Move left
+- **Right Arrow:** Move right
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
