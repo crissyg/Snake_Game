@@ -24,7 +24,12 @@ FOOD_COLOR = "#FF0000"  # RGB red
 BACKGROUND_COLOR = "#000000"  # RGB black
 
 class Snake:
-
+    """
+        Represents the snake entity with:
+        - Coordinate tracking (head at [0])
+        - Canvas references for efficient redraws
+        - Initial position at origin (0,0)
+        """
     def __init__(self):
         self.body_size = BODY_PARTS
         self.coordinates = []  # Grid positions (x,y)
@@ -43,15 +48,27 @@ class Snake:
             self.squares.append(square)
 
 class Food:
+    """
+        Food entity with grid-aligned positioning that ensures:
+        - Spawns within game boundaries
+        - Aligns to grid cells for collision accuracy
+        """
 
     def __init__(self):
+        # Calculate grid-aligned position
+        max_x = (GAME_WIDTH // SPACE_SIZE) - 1
+        max_y = (GAME_HEIGHT // SPACE_SIZE) - 1
+        self.coordinates = [
+            random.randint(0, max_x) * SPACE_SIZE,
+            random.randint(0, max_y) * SPACE_SIZE
+        ]
 
-        x = random.randint(0, (GAME_WIDTH / SPACE_SIZE)-1) * SPACE_SIZE
-        y = random.randint(0, (GAME_HEIGHT / SPACE_SIZE) - 1) * SPACE_SIZE
-
-        self.coordinates = [x, y]
-
-        canvas.create_oval(x, y, x + SPACE_SIZE, y + SPACE_SIZE, fill=FOOD_COLOR, tag="food")
+        # Visual representation
+        canvas.create_oval(
+            self.coordinates[0], self.coordinates[1],
+            self.coordinates[0] + SPACE_SIZE, self.coordinates[1] + SPACE_SIZE,
+            fill=FOOD_COLOR, tag="food"
+        )
 
 
 def next_turn(snake, food):
